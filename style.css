@@ -1,0 +1,28 @@
+.skeleton {
+    margin: 10px 0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .skeleton > div {
+    background-color: #e0e0e0;
+    height: 20px;
+    margin: 15px;
+    border-radius: 8px;
+  }
+  
+  .skeleton-img {
+    width: 100%;
+    height: 200px;
+    background-color: #cccccc;
+  }
+  
+  .skeleton-title,
+  .skeleton-author {
+    width: 80%;
+  }
+  
+  .skeleton-publisher {
+    width: 60%;
+  }
+  
