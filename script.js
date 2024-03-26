@@ -209,20 +209,29 @@ function fetchBookReviews(isbn) {
 }
 
 function fetchAndDisplayReviews(isbn) {
-    const bookReviewsContainer = $("#bookReviews");
-    // Display a loading message or spinner
-    bookReviewsContainer.html('<p class="text-center">Loading reviews...</p>');
-    
-    fetchBookReviews(isbn).done(function(response) {
-        // Once the data is fetched, replace the loading message with actual content
-        const reviewsContent = response.results.map(review => `<p>${review.summary}</p>`).join("") || "Not Found";
-        bookReviewsContainer.html(`<h6>Reviews:</h6>${reviewsContent}`);
-    }).fail(function() {
-        // In case of an error, update the content to indicate the failure
-        bookReviewsContainer.html("<p>Reviews are not available.</p>");
+  const bookReviewsContainer = $("#bookReviews");
+  // Display a loading message or spinner
+  bookReviewsContainer.html(`
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+`);
+
+  fetchBookReviews(isbn)
+    .done(function (response) {
+      // Once the data is fetched, replace the loading message with actual content
+      const reviewsContent =
+        response.results.map((review) => `<p>${review.summary}</p>`).join("") ||
+        "Not Found";
+      bookReviewsContainer.html(`<h6>Reviews:</h6>${reviewsContent}`);
+    })
+    .fail(function () {
+      // In case of an error, update the content to indicate the failure
+      bookReviewsContainer.html("<p>Reviews are not available.</p>");
     });
 }
-
 
 // TODO
 // add hovers
